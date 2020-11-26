@@ -1,3 +1,16 @@
-a = 123
-B = 154
-print(a + B)
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return "Hello World"
+
+
+def main():
+    app.run(debug=True)
+
+
+if __name__ == '__main__':
+    main()
