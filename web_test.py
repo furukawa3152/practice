@@ -1,3 +1,5 @@
+import random
+
 from faker import Faker
 from flask import Flask, request, render_template
 
@@ -10,21 +12,21 @@ def index():
 
 
 @app.route("/song_writing")
-def ad_search():
-    keyword = request.args.get("keyword")
-    return f"{keyword}だよ"
-
-
-@app.route("/test")
-def shout():
+def songs():
     fake = Faker("ja_JP")
-    fake_list = []
-    for i in range(3):
+    A_mero_list = []
+    for i in range(50):
         full = fake.text().split("。")
-        fake_list.append(full[0])
+        if 18 <= len(full[0]) <= 23:
+            A_mero_list.append(full[0])
+    keyword = request.args.get("keyword")
+    sub_word = fake.word()
+    sub_word2 = fake.word()
+    sabi = random.choice([f"{keyword}! {keyword}! ({sub_word}~~!)",
+                          f"{keyword}なのさ{sub_word},{sub_word2}でも"])
+    fake_list = [A_mero_list[1], A_mero_list[2], A_mero_list[3], sabi]
 
     return render_template('index.html', fake_list=fake_list)
-
 
 def main():
     app.run(debug=True)
