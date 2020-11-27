@@ -1,4 +1,5 @@
-from flask import Flask, request
+from faker import Faker
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -8,15 +9,21 @@ def index():
     return "Hello World"
 
 
-@app.route("/ad_search")
+@app.route("/song_writing")
 def ad_search():
-    zipcode = request.args.get("zipcode")
-    return f"{zipcode}だよ"
+    keyword = request.args.get("keyword")
+    return f"{keyword}だよ"
 
 
-@app.route("/shout/<string:name>")
-def shout(name: str):
-    return f"{name}だよ"
+@app.route("/test")
+def shout():
+    fake = Faker("ja_JP")
+    fake_list = []
+    for i in range(3):
+        full = fake.text().split("。")
+        fake_list.append(full[0])
+
+    return render_template('index.html', fake_list=fake_list)
 
 
 def main():
