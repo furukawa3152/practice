@@ -24,7 +24,7 @@ def songs():
     sub_word2 = fake.word()
     sabi = random.choice([f"{keyword}! {keyword}! ({sub_word}~~!)",
                           f"{keyword}なのさ{sub_word},{sub_word2}でも"])
-    fake_list = [A_mero_list[1], A_mero_list[2], A_mero_list[3], sabi]
+    fake_list = [A_mero_list[1], A_mero_list[2], A_mero_list[3], sabi, sabi]
 
     return render_template('index.html', fake_list=fake_list)
 
