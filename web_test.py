@@ -8,10 +8,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def top_page():
-    return render_template(top_page.html)
+    return render_template("top_page.html")
 
 
-@app.route("/song_writing")
+@app.route("/song_writing", methods=["GET"])
 def songs():
     fake = Faker("ja_JP")  # 歌詞作成
     A_ly = []
@@ -20,7 +20,7 @@ def songs():
         if 18 <= len(full[0]) <= 23:
             A_ly.append(full[0])
 
-    keyword = request.args.get("keyword")
+    keyword = request.args.get("keyword", "")
     sub_word = fake.word()
     sub_word2 = fake.word()
     sabi = random.choice([f"{keyword}! {keyword}! ({sub_word}～～!)({sub_word}～～!)",
@@ -42,8 +42,8 @@ def songs():
     s_b = random.choice(sinkou)
 
     # 曲構成作成
-    songs = [s_a, A_ly[1], s_a, A_ly[2], s_a, A_ly[3], s_b, sabi, s_b, sabi, s_a, A_ly[4], s_a, A_ly[5],
-             s_a, A_ly[6], s_b, sabi, s_b, sabi, s_a, A_ly[2], s_a, A_ly[3], s_b, sabi, s_b, sabi]
+    songs = [s_a, A_ly[1], s_a, A_ly[2], s_a, A_ly[3], "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[4], s_a, A_ly[5],
+             s_a, A_ly[6], "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[2], s_a, A_ly[3], "｜", s_b, sabi, s_b, sabi]
 
     return render_template('index.html', songs=songs, keyword=keyword)
 
