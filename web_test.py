@@ -26,7 +26,8 @@ def songs():
     sabi = random.choice([f"{keyword}! {keyword}! ({sub_word}～～!)({sub_word}～～!)",
                           f"絶対{keyword}なのさ！！{sub_word}が{sub_word2}でも～!",
                           f"{keyword}!!!その{sub_word}に{sub_word2}して～",
-                          f"{keyword}が{sub_word}だから～！（{sub_word2}も{sub_word}なのさ～！）"])  # サビパターン（追加予定）
+                          f"{keyword}が{sub_word}だから～！（{sub_word2}も{sub_word}なのさ～！）",
+                          f"おお、我らの{keyword}！！{sub_word}だから{sub_word2}で!！"])  # サビパターン（追加予定）
 
     # コード進行作成
     chord = {1: "C", 2: "D♭", 3: "D", 4: "E♭", 5: "E", 6: "F", 7: "G♭", 8: "G", 9: "A♭", 10: "A", 11: "B♭", 12: "B",
@@ -57,7 +58,9 @@ def songs():
                    sabi, s_a, A_ly[6],"_", s_a, A_ly[1], s_c, A_ly[7], "_", s_b, sabi, s_b, sabi),
 
                   (s_b, sabi, "_", s_a, A_ly[1], s_a, A_ly[2], s_a, A_ly[3], "_", s_c, A_ly[4], s_c, A_ly[5], "_",
-                   s_b, sabi, s_b, sabi, s_b, sabi, s_c, A_ly[4], s_c, A_ly[5])]
+                   s_b, sabi, s_b, sabi, s_b, sabi, s_c, A_ly[4], s_c, A_ly[5]),
+
+                  (s_a,A_ly[1],s_a,A_ly[2],"_",s_b,sabi,"_",s_a,A_ly[3],s_a,A_ly[4],"_",s_b,sabi,s_b,sabi)]
 
     songs = random.choice(songs_list)
 
