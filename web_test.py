@@ -37,15 +37,34 @@ def songs():
               f"{chord[key]}_______{chord[key + 7]}_______{chord[key]}_______{chord[key + 7]}___{chord[key]}___",
               f"{chord[key + 5]}_______{chord[key + 5]}m7_____{chord[key]}_______{chord[key]}_______",
               f"{chord[key + 5]}M7_____{chord[key + 4]}7______{chord[key + 9]}m7_____{chord[key]}M7_____",
-              f"{chord[key + 9]}m7_____{chord[key + 4]}m7_____{chord[key + 5]}___{chord[key + 7]}___{chord[key]}_______"]
+              f"{chord[key + 9]}m7_____{chord[key + 4]}m7_____{chord[key + 5]}___{chord[key + 7]}___{chord[key]}_______",
+              f"{chord[key + 5]}_______{chord[key + 7]}_______{chord[key + 4]}m______{chord[key + 9]}m______",
+              f"{chord[key + 5]}_______{chord[key]}_______{chord[key + 7]}_______{chord[key + 9]}m7_____",
+              f"{chord[key + 9]}m______{chord[key + 5]}_______{chord[key + 7]}_______{chord[key]}_______",
+              f"{chord[key]}_______{chord[key + 7]}_______{chord[key + 9]}m______{chord[key + 5]}_______",
+              f"{chord[key]}_______{chord[key + 9]}m7_____{chord[key + 2]}m7_____{chord[key + 7]}7______",
+              f"{chord[key + 9]}m______{chord[key + 5]}_______{chord[key + 7]}_______{chord[key]}_______",
+              f"{chord[key + 4]}m______{chord[key + 5]}_______{chord[key + 7]}_______{chord[key + 9]}m______"]
     s_a = random.choice(sinkou)
     s_b = random.choice(sinkou)
+    s_c = random.choice(sinkou)
 
     # 曲構成作成
-    songs = [s_a, A_ly[1], s_a, A_ly[2], s_a, A_ly[3], "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[4], s_a, A_ly[5],
-             s_a, A_ly[6], "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[2], s_a, A_ly[3], "｜", s_b, sabi, s_b, sabi]
+    songs_list = [(s_a, A_ly[1], s_a, A_ly[2], "|", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[3], s_a, A_ly[4]
+                   , "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[1], s_a, A_ly[2], "｜", s_b, sabi, s_b, sabi),
 
-    return render_template('index.html', songs=songs, keyword=keyword)
+                  (s_a, A_ly[1], s_a, A_ly[2], "|", s_b, sabi, s_a, A_ly[3], "|", s_a, A_ly[4], s_a, A_ly[5], "|", s_b,
+                   sabi, s_a, A_ly[6],
+                   "|", s_a, A_ly[1], s_c, A_ly[7], "|", s_b, sabi, s_b, sabi)]
+
+    songs = random.choice(songs_list)
+
+    writer_j = fake.name()
+    lyric = fake.name()
+    fake_e = Faker("en_US")
+    writer_e = fake_e.name()
+    writer = random.choice([writer_j, writer_e])
+    return render_template('index.html', songs=songs, keyword=keyword, writer=writer, lyric=lyric)
 
 
 def main():
