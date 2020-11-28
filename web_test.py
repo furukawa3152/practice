@@ -29,8 +29,8 @@ def songs():
                           f"{keyword}が{sub_word}だから～！（{sub_word2}も{sub_word}なのさ～！）"])  # サビパターン（追加予定）
 
     # コード進行作成
-    chord = {1: "C", 2: "C#", 3: "D", 4: "D#", 5: "E", 6: "F", 7: "F#", 8: "G", 9: "G#", 10: "A", 11: "A#", 12: "B",
-             13: "C", 14: "C#", 15: "D", 16: "D#", 17: "E", 18: "F", 19: "F#", 20: "G", 21: "G#", 22: "A", 23: "A#",
+    chord = {1: "C", 2: "D♭", 3: "D", 4: "E♭", 5: "E", 6: "F", 7: "G♭", 8: "G", 9: "A♭", 10: "A", 11: "B♭", 12: "B",
+             13: "C", 14: "D♭", 15: "D", 16: "E♭", 17: "E", 18: "F", 19: "G♭", 20: "G", 21: "A♭", 22: "A", 23: "B♭",
              24: "B"}
     key = random.choice([1, 3, 5, 6, 8, 10, 12])  # トニックに#がつくのは避けてみた。こっちが見やすいかな？
     sinkou = [f"{chord[key + 5]}_______{chord[key + 7]}_______{chord[key]}_______{chord[key]}_______",
@@ -50,12 +50,14 @@ def songs():
     s_c = random.choice(sinkou)
 
     # 曲構成作成
-    songs_list = [(s_a, A_ly[1], s_a, A_ly[2], "|", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[3], s_a, A_ly[4]
-                   , "｜", s_b, sabi, s_b, sabi, "｜", s_a, A_ly[1], s_a, A_ly[2], "｜", s_b, sabi, s_b, sabi),
+    songs_list = [(s_a, A_ly[1], s_a, A_ly[2], "_", s_b, sabi, s_b, sabi, "_", s_a, A_ly[3], s_a, A_ly[4]
+                   , "_", s_b, sabi, s_b, sabi, "_", s_c, A_ly[1], "_", s_b, sabi, s_b, sabi),
 
-                  (s_a, A_ly[1], s_a, A_ly[2], "|", s_b, sabi, s_a, A_ly[3], "|", s_a, A_ly[4], s_a, A_ly[5], "|", s_b,
-                   sabi, s_a, A_ly[6],
-                   "|", s_a, A_ly[1], s_c, A_ly[7], "|", s_b, sabi, s_b, sabi)]
+                  (s_a, A_ly[1], s_a, A_ly[2], "_", s_b, sabi, s_a, A_ly[3], "_", s_a, A_ly[4], s_a, A_ly[5], "_", s_b,
+                   sabi, s_a, A_ly[6],"_", s_a, A_ly[1], s_c, A_ly[7], "_", s_b, sabi, s_b, sabi),
+
+                  (s_b, sabi, "_", s_a, A_ly[1], s_a, A_ly[2], s_a, A_ly[3], "_", s_c, A_ly[4], s_c, A_ly[5], "_",
+                   s_b, sabi, s_b, sabi, s_b, sabi, s_c, A_ly[4], s_c, A_ly[5])]
 
     songs = random.choice(songs_list)
 
